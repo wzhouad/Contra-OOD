@@ -1,0 +1,1 @@
+Get multi30k data from https://github.com/multi30k/dataset/tree/master/data/task1/image_splits. In the paper we use the union of test_2016_flickr.en, test_2017_mscoco.en, and test_2018_flickr.en
