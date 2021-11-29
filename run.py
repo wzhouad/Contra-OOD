@@ -159,7 +159,7 @@ def main():
 
     for dataset in datasets:
         if dataset == args.task_name:
-            train_dataset, dev_dataset, test_dataset = load(dataset, tokenizer, max_seq_length=args.max_seq_length)
+            train_dataset, dev_dataset, test_dataset = load(dataset, tokenizer, max_seq_length=args.max_seq_length, is_id=True)
         else:
             _, _, ood_dataset = load(dataset, tokenizer, max_seq_length=args.max_seq_length)
             benchmarks = (('ood_' + dataset, ood_dataset),) + benchmarks

@@ -16,7 +16,7 @@ task_to_keys = {
 }
 
 
-def load(task_name, tokenizer, max_seq_length=256):
+def load(task_name, tokenizer, max_seq_length=256, is_id=False):
     sentence1_key, sentence2_key = task_to_keys[task_name]
     print("Loading {}".format(task_name))
     if task_name in ('mnli', 'rte'):
@@ -42,8 +42,8 @@ def load(task_name, tokenizer, max_seq_length=256):
         result["labels"] = examples["label"] if 'label' in examples else 0
         return result
 
-    train_dataset = list(map(preprocess_function, datasets['train'])) if 'train' in datasets else None
-    dev_dataset = list(map(preprocess_function, datasets['validation'])) if 'validation' in datasets else None
+    train_dataset = list(map(preprocess_function, datasets['train'])) if 'train' in datasets and is_id else None
+    dev_dataset = list(map(preprocess_function, datasets['validation'])) if 'validation' in datasets and is_id else None
     test_dataset = list(map(preprocess_function, datasets['test'])) if 'test' in datasets else None
     return train_dataset, dev_dataset, test_dataset
 
